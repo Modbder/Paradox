@@ -1,0 +1,5 @@
+{
+        "sound.badending": {"category": "master","sounds":[{"name": "sound/badending","stream": false}]},
+		"sound.goodending": {"category": "master","sounds":[{"name": "sound/goodending","stream": false}]},
+		"sound.realending": {"category": "master","sounds":[{"name": "sound/realending","stream": false}]}
+}
