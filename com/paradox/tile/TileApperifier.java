@@ -36,9 +36,10 @@ public class TileApperifier extends TileParadoxCommon{
 	{
 		return this.getStackInSlot(0) != null
 				&& this.getStackInSlot(0).getItem() instanceof ItemParadoxCard 
-				&& (this.worldObj.getBlock(xCoord, yCoord+1, zCoord).isAir(worldObj, xCoord, yCoord+1, zCoord) || (FluidRegistry.lookupFluidForBlock(Block.getBlockFromItem(this.getStackInSlot(0).getItem())) != null)
-				&& (this.worldObj.getTileEntity(xCoord, yCoord+1, zCoord) != null && this.worldObj.getTileEntity(xCoord, yCoord+1, zCoord) instanceof IFluidHandler
-				&& ((IFluidHandler)this.worldObj.getTileEntity(xCoord, yCoord+1, zCoord)).fill(ForgeDirection.DOWN, new FluidStack(FluidRegistry.lookupFluidForBlock(Block.getBlockFromItem(this.getStackInSlot(0).getItem())),1000), false) == 1000))
+				&& (this.worldObj.getBlock(xCoord, yCoord+1, zCoord).isAir(worldObj, xCoord, yCoord+1, zCoord) 
+						|| ParadoxUtils.isFluidCard(this.getStackInSlot(0))
+						&& (this.worldObj.getTileEntity(xCoord, yCoord+1, zCoord) != null && this.worldObj.getTileEntity(xCoord, yCoord+1, zCoord) instanceof IFluidHandler
+						&& ((IFluidHandler)this.worldObj.getTileEntity(xCoord, yCoord+1, zCoord)).fill(ForgeDirection.DOWN, ParadoxUtils.getFluidStackByCard(this.getStackInSlot(0)), false) == ParadoxUtils.getFluidStackByCard(this.getStackInSlot(0)).amount))
 				&& !this.worldObj.isBlockIndirectlyGettingPowered(xCoord, yCoord, zCoord);
 	}
 	
@@ -73,12 +74,15 @@ public class TileApperifier extends TileParadoxCommon{
 							{
 								this.worldObj.playAuxSFX(xCoord, yCoord+1, zCoord, 2001, Block.getIdFromBlock(b));
 							}
-							if(FluidRegistry.lookupFluidForBlock(Block.getBlockFromItem(this.getStackInSlot(0).getItem())) == null)
+							if(!ParadoxUtils.isFluidCard(this.getStackInSlot(0)))
 								this.worldObj.setBlock(xCoord, yCoord+1, zCoord, b, metadata, 3);
 							else
 							{
 								IFluidHandler fh = (IFluidHandler) this.worldObj.getTileEntity(xCoord, yCoord+1, zCoord);
-								fh.fill(ForgeDirection.DOWN, new FluidStack(FluidRegistry.lookupFluidForBlock(Block.getBlockFromItem(this.getStackInSlot(0).getItem())),1000), true);
+								if(fh != null)
+									fh.fill(ForgeDirection.DOWN, ParadoxUtils.getFluidStackByCard(this.getStackInSlot(0)), true);
+								else
+									this.worldObj.setBlock(xCoord, yCoord+1, zCoord, b, metadata, 3);
 							}
 						}
 					}

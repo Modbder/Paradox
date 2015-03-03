@@ -1,7 +1,10 @@
 package com.paradox.blocks;
 
+import java.util.List;
+
 import DummyCore.Utils.MiscUtils;
 
+import com.paradox.api.IInformationProvider;
 import com.paradox.common.GCLibrary;
 import com.paradox.tile.TileApperifier;
 import com.paradox.tile.TileHandyGenerator;
@@ -13,11 +16,13 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockApperifier extends BlockContainer{
+public class BlockApperifier extends BlockContainer implements IInformationProvider{
 	
 	public BlockApperifier()
 	{
@@ -63,4 +68,18 @@ public class BlockApperifier extends BlockContainer{
 		MiscUtils.dropItemsOnBlockBreak(par1World, par2, par3, par4, par5, par6);
 		super.breakBlock(par1World, par2, par3, par4, par5, par6);
     }
+
+
+
+	@Override
+	public void addInformation(ItemStack stk, EntityPlayer p, List lst,
+			boolean held) {
+		lst.add("Used to apperify blocks using ItemCards");
+		lst.add("Inputs:");
+		lst.add(" *Paradox:"+EnumChatFormatting.GREEN+" Bottom");
+		lst.add("Outputs:");
+		lst.add(" *Blocks:"+EnumChatFormatting.GREEN+" Top");
+		lst.add("Internal:");
+		lst.add(" *Paradox storage:"+EnumChatFormatting.GREEN+" 1000");
+	}
 }

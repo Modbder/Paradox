@@ -17,32 +17,32 @@ public class ParadoxBlocks {
 	public static void initBlocks()
 	{
 		timer = new BlockParadoxTimer().setBlockName("paradox.timer").setBlockTextureName("paradoxmod:clock").setHardness(10.0F).setLightOpacity(0).setLightLevel(8).setResistance(10).setStepSound(Block.soundTypeMetal);
-		BlocksRegistry.registerBlock(timer, "Timer", ParadoxCore.class, ItemBlock.class);
+		BlocksRegistry.registerBlock(timer, "Timer", ParadoxCore.class, ItemBlockHasMetadata.class);
 		handyGen = new BlockParadoxHandyGen().setBlockName("paradox.handyGen").setBlockTextureName("paradoxmod:clock").setHardness(1.0F).setLightOpacity(1).setLightLevel(0).setResistance(1).setStepSound(Block.soundTypeMetal);
-		BlocksRegistry.registerBlock(handyGen, "handyGen", ParadoxCore.class, ItemBlock.class);
+		BlocksRegistry.registerBlock(handyGen, "handyGen", ParadoxCore.class, ItemBlockHasMetadata.class);
 		pinkVine = new BlockPinkVine().setBlockName("paradox.pink.pinkvine.pink.pink.pink").setBlockTextureName("paradoxmod:pinkVine").setHardness(1.0F).setLightOpacity(1).setLightLevel(0).setResistance(1).setStepSound(Block.soundTypeGrass);
-		BlocksRegistry.registerBlock(pinkVine, "pinkVine", ParadoxCore.class, ItemBlock.class);
+		BlocksRegistry.registerBlock(pinkVine, "pinkVine", ParadoxCore.class, ItemBlockHasMetadata.class);
 		paradox = new Fluid("paradoxalFluid").setDensity(10000).setLuminosity(15).setTemperature(290).setViscosity(10000);
 		FluidRegistry.registerFluid(paradox);
 		paradoxLiquid = new BlockParadoxalLiquid(paradox, Material.water).setBlockName("paradox.fluid.paradox").setBlockTextureName("paradoxmod:paradox").setBlockUnbreakable().setLightLevel(15F).setTickRandomly(true);
-		BlocksRegistry.registerBlock(paradoxLiquid, "paradoxLiquid", ParadoxCore.class, ItemBlock.class);
+		BlocksRegistry.registerBlock(paradoxLiquid, "paradoxLiquid", ParadoxCore.class, ItemBlockHasMetadata.class);
 		paradox.setBlock(paradoxLiquid);
 		liquifier = new BlockParadoxLiquifier().setBlockName("paradox.liquifier").setBlockTextureName("paradoxmod:clock").setHardness(1.0F).setLightOpacity(1).setLightLevel(0).setResistance(1).setStepSound(Block.soundTypeMetal);
-		BlocksRegistry.registerBlock(liquifier, "liquifier", ParadoxCore.class, ItemBlock.class);
+		BlocksRegistry.registerBlock(liquifier, "liquifier", ParadoxCore.class, ItemBlockHasMetadata.class);
 		rFGen = new BlockRFGen().setBlockName("paradox.rFGen").setBlockTextureName("paradoxmod:clock").setHardness(1.0F).setLightOpacity(1).setLightLevel(0).setResistance(1).setStepSound(Block.soundTypeMetal);
 		BlocksRegistry.registerBlock(rFGen, "rFGen", ParadoxCore.class, ItemBlockHasMetadata.class);
 		paradoxifier = new BlockParadoxifier().setBlockName("paradox.paradoxifier").setBlockTextureName("paradoxmod:clock").setHardness(1.0F).setLightOpacity(1).setLightLevel(0).setResistance(1).setStepSound(Block.soundTypeMetal);
-		BlocksRegistry.registerBlock(paradoxifier, "paradoxifier", ParadoxCore.class, ItemBlock.class);
+		BlocksRegistry.registerBlock(paradoxifier, "paradoxifier", ParadoxCore.class, ItemBlockHasMetadata.class);
 		mruGen = new BlockMRUGenerator().setBlockName("paradox.mruGen").setBlockTextureName("paradoxmod:clock").setHardness(1.0F).setLightOpacity(1).setLightLevel(0).setResistance(1).setStepSound(Block.soundTypeMetal);
-		BlocksRegistry.registerBlock(mruGen, "mruGen", ParadoxCore.class, ItemBlock.class);
+		BlocksRegistry.registerBlock(mruGen, "mruGen", ParadoxCore.class, ItemBlockHasMetadata.class);
 		potentiaGenerator = new BlockPotentiaGen().setBlockName("paradox.potentiaGenerator").setBlockTextureName("paradoxmod:clock").setHardness(1.0F).setLightOpacity(1).setLightLevel(0).setResistance(1).setStepSound(Block.soundTypeMetal);
-		BlocksRegistry.registerBlock(potentiaGenerator, "potentiaGenerator", ParadoxCore.class, ItemBlock.class);
+		BlocksRegistry.registerBlock(potentiaGenerator, "potentiaGenerator", ParadoxCore.class, ItemBlockHasMetadata.class);
 		secret = new BlockParadoxSecret().setBlockName("paradox.secret").setBlockTextureName("paradoxmod:secret").setHardness(1.0F).setLightOpacity(1).setLightLevel(0).setResistance(1).setStepSound(Block.soundTypeMetal);
-		BlocksRegistry.registerBlock(secret, "secret", ParadoxCore.class, ItemBlock.class);
+		BlocksRegistry.registerBlock(secret, "secret", ParadoxCore.class, ItemBlockHasMetadata.class);
 		apperifier = new BlockApperifier().setBlockName("paradox.apperifier").setBlockTextureName("paradoxmod:clock").setHardness(1.0F).setLightOpacity(1).setLightLevel(0).setResistance(1).setStepSound(Block.soundTypeMetal);
-		BlocksRegistry.registerBlock(apperifier, "apperifier", ParadoxCore.class, ItemBlock.class);
+		BlocksRegistry.registerBlock(apperifier, "apperifier", ParadoxCore.class, ItemBlockHasMetadata.class);
 		endore = new BlockEndOre().setBlockName("paradox.endore").setBlockTextureName("paradoxmod:end_ore").setHardness(1.0F).setLightOpacity(1).setLightLevel(0).setResistance(1).setStepSound(Block.soundTypeStone);
-		BlocksRegistry.registerBlock(endore, "endore", ParadoxCore.class, ItemBlock.class);
+		BlocksRegistry.registerBlock(endore, "endore", ParadoxCore.class, ItemBlockHasMetadata.class);
 		endore.setHarvestLevel("pickaxe", 1);
 		OreDictionary.registerOre("oreEnderPearl", endore);
 	}

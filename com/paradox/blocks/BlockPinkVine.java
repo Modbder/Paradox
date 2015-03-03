@@ -1,6 +1,9 @@
 package com.paradox.blocks;
 
+import java.util.List;
 import java.util.Random;
+
+import com.paradox.api.IInformationProvider;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -18,7 +21,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
-public class BlockPinkVine extends Block implements IGrowable{
+public class BlockPinkVine extends Block implements IGrowable, IInformationProvider{
 
 	public IIcon[] icons = new IIcon[8];
 	
@@ -143,5 +146,14 @@ public class BlockPinkVine extends Block implements IGrowable{
 
         p_149863_1_.setBlockMetadataWithNotify(p_149863_2_, p_149863_3_, p_149863_4_, l, 2);
     }
+
+	@Override
+	public void addInformation(ItemStack stk, EntityPlayer p, List lst,
+			boolean held) {
+		lst.add("Grows pink dye, if light level is < 12");
+		lst.add("When grows, reverts it's growth state to 3.");
+		lst.add("Has 7 growth stages");
+		lst.add("The light level does not affect the growth speed");
+	}
 
 }

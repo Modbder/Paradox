@@ -1,14 +1,19 @@
 package com.paradox.blocks;
 
+import java.util.List;
+
+import com.paradox.api.IInformationProvider;
 import com.paradox.tile.TileTimer;
 
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockParadoxTimer extends BlockContainer{
+public class BlockParadoxTimer extends BlockContainer implements IInformationProvider{
 	
 	public BlockParadoxTimer()
 	{
@@ -69,6 +74,14 @@ public class BlockParadoxTimer extends BlockContainer{
 	public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_)
 	{
 		return new TileTimer();
+	}
+
+	@Override
+	public void addInformation(ItemStack stk, EntityPlayer p, List lst,
+			boolean held) {
+		lst.add("Counts down the time you have left");
+		lst.add("No, breaking this block does not stop the countdown");
+		
 	}
 
 }

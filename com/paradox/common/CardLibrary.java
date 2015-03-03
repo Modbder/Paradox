@@ -1,6 +1,8 @@
 package com.paradox.common;
 
 import net.minecraft.init.Blocks;
+import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
 import DummyCore.Utils.UnformedItemStack;
 
@@ -42,7 +44,7 @@ public class CardLibrary {
 		ParadoxUtils.registerParadoxValueFor("oreInfusedOrder", 150);
 		ParadoxUtils.registerParadoxValueFor("oreInfusedEntropy", 150);
 		ParadoxUtils.registerParadoxValueFor("oreGold", 150);
-		ParadoxUtils.registerParadoxValueFor("blockLava", 30);
+		ParadoxUtils.registerParadoxValueFor("blockLava", 30, new FluidStack(FluidRegistry.LAVA,1000));
 		ParadoxUtils.registerParadoxValueFor("oreSilver", 155);
 		ParadoxUtils.registerParadoxValueFor("oreSulfur", 130);
 		ParadoxUtils.registerParadoxValueFor("oreSaltpeter", 130);

@@ -185,11 +185,11 @@ public class TilePotentiaGenerator extends TileParadoxCommon implements IAspectC
 	
 	public void updateEntity()
 	{
-		if(this.getAspects().getAmount(Aspect.ENERGY) > 0 && this.cooldown <= 0 && this.getParadox() + 10 <= this.getMaxParadox())
+		if(this.getAspects().getAmount(Aspect.ENERGY) > 0 && this.cooldown <= 0 && this.getParadox() + 3 <= this.getMaxParadox())
 		{
 			if(this.takeFromContainer(Aspect.ENERGY, 1))
 			{
-				this.cooldown = 200;
+				this.cooldown = 80;
 			}
 		}
 

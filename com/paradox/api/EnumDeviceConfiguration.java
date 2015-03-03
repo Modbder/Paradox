@@ -1,5 +1,10 @@
 package com.paradox.api;
 
+/**
+ * 
+ * @author Modbder
+ * @Descriprion used to ease rendering of different devices.
+ */
 public enum EnumDeviceConfiguration {
 	
 	ITEMS(0),
@@ -16,6 +21,7 @@ public enum EnumDeviceConfiguration {
 		return id;
 	}
 	
+	//Not sure, why not just make the variable public?
 	int id;
 
 }

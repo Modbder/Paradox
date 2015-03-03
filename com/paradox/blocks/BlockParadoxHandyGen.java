@@ -1,16 +1,21 @@
 package com.paradox.blocks;
 
+import java.util.List;
+
+import com.paradox.api.IInformationProvider;
 import com.paradox.tile.TileHandyGenerator;
 import com.paradox.tile.TileTimer;
 
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockParadoxHandyGen extends BlockContainer{
+public class BlockParadoxHandyGen extends BlockContainer implements IInformationProvider{
 	
 	public BlockParadoxHandyGen()
 	{
@@ -22,6 +27,18 @@ public class BlockParadoxHandyGen extends BlockContainer{
     {
         return 0;
     }
+    
+	@Override
+	public void addInformation(ItemStack stk, EntityPlayer p, List lst,
+			boolean held) {
+		lst.add("Used to generate Paradox using kinetic energy");
+		lst.add("Outputs:");
+		lst.add(" *Paradox:"+EnumChatFormatting.GREEN+" Top");
+		lst.add("Internal:");
+		lst.add(" *Paradox storage:"+EnumChatFormatting.GREEN+" 40");
+		lst.add(" *Uses:"+EnumChatFormatting.GREEN+"1.5Food/Click");
+		lst.add(" *Generates:"+EnumChatFormatting.GREEN+"1Paradox/Click");
+	}
     
     public void setBlockBoundsBasedOnState(IBlockAccess p_149719_1_, int p_149719_2_, int p_149719_3_, int p_149719_4_)
     {

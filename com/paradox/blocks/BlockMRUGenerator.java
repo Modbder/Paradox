@@ -1,7 +1,10 @@
 package com.paradox.blocks;
 
+import java.util.List;
+
 import DummyCore.Utils.MiscUtils;
 
+import com.paradox.api.IInformationProvider;
 import com.paradox.common.GCLibrary;
 import com.paradox.tile.TileHandyGenerator;
 import com.paradox.tile.TileMRUGenerator;
@@ -11,11 +14,13 @@ import com.paradox.tile.TileTimer;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockMRUGenerator extends BlockContainer{
+public class BlockMRUGenerator extends BlockContainer implements IInformationProvider{
 	
 	public BlockMRUGenerator()
 	{
@@ -27,6 +32,21 @@ public class BlockMRUGenerator extends BlockContainer{
     {
         return 0;
     }
+    
+	@Override
+	public void addInformation(ItemStack stk, EntityPlayer p, List lst,
+			boolean held) {
+		lst.add("Used to generate Paradox using MRU");
+		lst.add("Inputs:");
+		lst.add(" *MRU:"+EnumChatFormatting.GREEN+" Any Side");
+		lst.add("Outputs:");
+		lst.add(" *Paradox:"+EnumChatFormatting.GREEN+" Top");
+		lst.add("Internal:");
+		lst.add(" *Paradox storage:"+EnumChatFormatting.GREEN+" 100");
+		lst.add(" *MRU storage:"+EnumChatFormatting.GREEN+" 5000");
+		lst.add(" *Uses:"+EnumChatFormatting.GREEN+"100MRU/tick");
+		lst.add(" *Generates:"+EnumChatFormatting.GREEN+"1Paradox/Second");
+	}
     
     public void setBlockBoundsBasedOnState(IBlockAccess p_149719_1_, int p_149719_2_, int p_149719_3_, int p_149719_4_)
     {

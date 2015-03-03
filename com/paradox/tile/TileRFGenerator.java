@@ -187,10 +187,10 @@ public class TileRFGenerator extends TileParadoxCommon implements IEnergyHandler
 			}
 			case 3:
 			{
-				if(rfToP < 20 && this.storage.extractEnergy(1500, true) >= 1500 && this.getParadox()+40<=this.getMaxParadox())
+				if(rfToP < 20 && this.storage.extractEnergy(1800, true) >= 1500 && this.getParadox()+40<=this.getMaxParadox())
 				{
 					++rfToP;
-					this.storage.extractEnergy(1500, false);
+					this.storage.extractEnergy(1800, false);
 				}
 				if(rfToP >= 20 && this.getParadox() + 40 <= this.getMaxParadox())
 				{
