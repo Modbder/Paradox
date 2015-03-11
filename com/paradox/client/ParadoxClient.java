@@ -65,6 +65,7 @@ public class ParadoxClient extends ParadoxServer
 		ClientRegistry.bindTileEntitySpecialRenderer(TileApperifier.class, new RenderTileApperifier());
 		
 		MinecraftForgeClient.registerItemRenderer(ParadoxItems.card, new ParadoxCardRenderer());
+		MinecraftForgeClient.registerItemRenderer(ParadoxItems.entityCard, new ParadoxCardRenderer());
 	}
 	
 	

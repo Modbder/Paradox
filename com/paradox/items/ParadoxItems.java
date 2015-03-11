@@ -23,11 +23,14 @@ public class ParadoxItems {
 		ItemRegistry.registerItem(card, "paradoxCard", ParadoxCore.class);
 		extender = new ItemTimeExtender().setUnlocalizedName("paradox.extender").setTextureName("paradoxmod:timeExtender").setMaxStackSize(1);
 		ItemRegistry.registerItem(extender, "extender", ParadoxCore.class);
+		entityCard = new ItemParadoxCard_Entity().setUnlocalizedName("paradox.ecard").setTextureName("paradoxmod:card");
+		ItemRegistry.registerItem(entityCard, "paradoxECard", ParadoxCore.class);
 	}
 	
 	public static Item
 	paradoxBucket,
 	card,
-	extender;
+	extender,
+	entityCard;
 
 }

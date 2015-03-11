@@ -215,6 +215,7 @@ public class RenderParadoxBlocks implements ISimpleBlockRenderingHandler{
 			Block block, int modelId, RenderBlocks renderer) {
 		if(block instanceof BlockParadoxTimer)
 		{
+			renderer.renderAllFaces = true;
 			int metadata = world.getBlockMetadata(x, y, z); 
 			if(metadata == 2)
 			{
@@ -241,6 +242,7 @@ public class RenderParadoxBlocks implements ISimpleBlockRenderingHandler{
 				renderer.renderStandardBlock(Blocks.glass, x, y, z);
 			}
 			renderer.clearOverrideBlockTexture();
+			renderer.renderAllFaces = false;
 			return true;
 		}
 		if(block instanceof BlockParadoxHandyGen

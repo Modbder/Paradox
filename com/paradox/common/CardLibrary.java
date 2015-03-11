@@ -1,5 +1,32 @@
 package com.paradox.common;
 
+import net.minecraft.entity.monster.EntityBlaze;
+import net.minecraft.entity.monster.EntityCaveSpider;
+import net.minecraft.entity.monster.EntityCreeper;
+import net.minecraft.entity.monster.EntityEnderman;
+import net.minecraft.entity.monster.EntityGhast;
+import net.minecraft.entity.monster.EntityGolem;
+import net.minecraft.entity.monster.EntityIronGolem;
+import net.minecraft.entity.monster.EntityMagmaCube;
+import net.minecraft.entity.monster.EntityPigZombie;
+import net.minecraft.entity.monster.EntitySilverfish;
+import net.minecraft.entity.monster.EntitySkeleton;
+import net.minecraft.entity.monster.EntitySlime;
+import net.minecraft.entity.monster.EntitySnowman;
+import net.minecraft.entity.monster.EntitySpider;
+import net.minecraft.entity.monster.EntityWitch;
+import net.minecraft.entity.monster.EntityZombie;
+import net.minecraft.entity.passive.EntityBat;
+import net.minecraft.entity.passive.EntityChicken;
+import net.minecraft.entity.passive.EntityCow;
+import net.minecraft.entity.passive.EntityHorse;
+import net.minecraft.entity.passive.EntityMooshroom;
+import net.minecraft.entity.passive.EntityOcelot;
+import net.minecraft.entity.passive.EntityPig;
+import net.minecraft.entity.passive.EntitySheep;
+import net.minecraft.entity.passive.EntitySquid;
+import net.minecraft.entity.passive.EntityVillager;
+import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.init.Blocks;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
@@ -7,6 +34,9 @@ import net.minecraftforge.oredict.OreDictionary;
 import DummyCore.Utils.UnformedItemStack;
 
 import com.paradox.common.utils.ParadoxUtils;
+
+import ec3.common.entity.EntityPoisonFume;
+import ec3.common.entity.EntityWindMage;
 
 public class CardLibrary {
 	
@@ -64,6 +94,61 @@ public class CardLibrary {
 		ParadoxUtils.registerParadoxValueFor("blockEndstone", 100);
 		ParadoxUtils.registerParadoxValueFor("blockSoulSand", 30);
 		ParadoxUtils.registerParadoxValueFor("oreEnderPearl", 35);
+		
+		ParadoxUtils.registerParadoxValueForEntity(EntityZombie.class, 20);
+		ParadoxUtils.registerParadoxValueForEntity(EntitySkeleton.class, 20);
+		ParadoxUtils.registerParadoxValueForEntity(EntityCreeper.class, 30);
+		ParadoxUtils.registerParadoxValueForEntity(EntitySpider.class, 12);
+		ParadoxUtils.registerParadoxValueForEntity(EntityCaveSpider.class, 8);
+		ParadoxUtils.registerParadoxValueForEntity(EntityEnderman.class, 42);
+		ParadoxUtils.registerParadoxValueForEntity(EntityPigZombie.class, 24);
+		ParadoxUtils.registerParadoxValueForEntity(EntityBlaze.class, 80);
+		ParadoxUtils.registerParadoxValueForEntity(EntityGhast.class, 100);
+		ParadoxUtils.registerParadoxValueForEntity(EntityMagmaCube.class, 60);
+		ParadoxUtils.registerParadoxValueForEntity(EntitySlime.class, 10);
+		ParadoxUtils.registerParadoxValueForEntity(EntitySilverfish.class, 2);
+		ParadoxUtils.registerParadoxValueForEntity(EntityWitch.class, 32);
+		ParadoxUtils.registerParadoxValueForEntity(EntityHorse.class, 16);
+		ParadoxUtils.registerParadoxValueForEntity(EntityOcelot.class, 16);
+		ParadoxUtils.registerParadoxValueForEntity(EntityWolf.class, 16);
+		ParadoxUtils.registerParadoxValueForEntity(EntityIronGolem.class, 100);
+		ParadoxUtils.registerParadoxValueForEntity(EntitySnowman.class, 20);
+		ParadoxUtils.registerParadoxValueForEntity(EntityBat.class, 1);
+		ParadoxUtils.registerParadoxValueForEntity(EntityChicken.class, 8);
+		ParadoxUtils.registerParadoxValueForEntity(EntityCow.class, 8);
+		ParadoxUtils.registerParadoxValueForEntity(EntityMooshroom.class, 9);
+		ParadoxUtils.registerParadoxValueForEntity(EntityPig.class, 8);
+		ParadoxUtils.registerParadoxValueForEntity(EntitySheep.class, 8);
+		ParadoxUtils.registerParadoxValueForEntity(EntitySquid.class, 8);
+		ParadoxUtils.registerParadoxValueForEntity(EntityVillager.class, 32);
+		
+		ParadoxUtils.registerParadoxValueForEntity("thaumcraft.common.entities.monster.EntityBrainyZombie", 24);
+		ParadoxUtils.registerParadoxValueForEntity("thaumcraft.common.entities.monster.EntityCultistCleric", 56);
+		ParadoxUtils.registerParadoxValueForEntity("thaumcraft.common.entities.monster.EntityCultistKnight", 52);
+		ParadoxUtils.registerParadoxValueForEntity("thaumcraft.common.entities.monster.EntityEldritchGuardian", 127);
+		ParadoxUtils.registerParadoxValueForEntity("thaumcraft.common.entities.monster.EntityEldritchCrab", 31);
+		ParadoxUtils.registerParadoxValueForEntity("thaumcraft.common.entities.monster.EntityGiantBrainyZombie", 42);
+		ParadoxUtils.registerParadoxValueForEntity("thaumcraft.common.entities.monster.EntityInhabitedZombie", 42);
+		ParadoxUtils.registerParadoxValueForEntity("thaumcraft.common.entities.monster.EntityMindSpider", 666);
+		ParadoxUtils.registerParadoxValueForEntity("thaumcraft.common.entities.monster.EntityPech", 32);
+		ParadoxUtils.registerParadoxValueForEntity("thaumcraft.common.entities.monster.EntityTaintacle", 64);
+		ParadoxUtils.registerParadoxValueForEntity("thaumcraft.common.entities.monster.EntityTaintacleSmall", 4);
+		ParadoxUtils.registerParadoxValueForEntity("thaumcraft.common.entities.monster.EntityTaintChicken", 12);
+		ParadoxUtils.registerParadoxValueForEntity("thaumcraft.common.entities.monster.EntityTaintCow", 12);
+		ParadoxUtils.registerParadoxValueForEntity("thaumcraft.common.entities.monster.EntityTaintCreeper", 34);
+		ParadoxUtils.registerParadoxValueForEntity("thaumcraft.common.entities.monster.EntityTaintPig", 12);
+		ParadoxUtils.registerParadoxValueForEntity("thaumcraft.common.entities.monster.EntityTaintSheep", 12);
+		ParadoxUtils.registerParadoxValueForEntity("thaumcraft.common.entities.monster.EntityTaintSpider", 16);
+		ParadoxUtils.registerParadoxValueForEntity("thaumcraft.common.entities.monster.EntityTaintSpore", 88);
+		ParadoxUtils.registerParadoxValueForEntity("thaumcraft.common.entities.monster.EntityTaintSporeSwarmer", 88);
+		ParadoxUtils.registerParadoxValueForEntity("thaumcraft.common.entities.monster.EntityTaintSwarm", 6);
+		ParadoxUtils.registerParadoxValueForEntity("thaumcraft.common.entities.monster.EntityTaintVillager", 48);
+		ParadoxUtils.registerParadoxValueForEntity("thaumcraft.common.entities.monster.EntityThaumicSlime", 12);
+		ParadoxUtils.registerParadoxValueForEntity("thaumcraft.common.entities.monster.EntityWisp", 17);
+		
+		ParadoxUtils.registerParadoxValueForEntity(EntityWindMage.class, 36);
+		ParadoxUtils.registerParadoxValueForEntity(EntityPoisonFume.class, 72);
+		ParadoxUtils.registerParadoxValueForEntity("thermalfoundation.entity.monster.EntityBlizz", 80);
 	}
 
 }

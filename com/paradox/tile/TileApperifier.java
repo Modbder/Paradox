@@ -5,14 +5,20 @@ import DummyCore.Utils.UnformedItemStack;
 
 import com.paradox.common.utils.ParadoxUtils;
 import com.paradox.items.ItemParadoxCard;
+import com.paradox.items.ItemParadoxCard_Entity;
 
 import net.minecraft.block.Block;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
@@ -32,6 +38,15 @@ public class TileApperifier extends TileParadoxCommon{
 		this.setSlotAccessibleFrom(0, ForgeDirection.VALID_DIRECTIONS);
 	}
 	
+	public boolean canCreateEntity()
+	{
+		return this.getStackInSlot(0) != null
+				&& this.getStackInSlot(0).getItem() instanceof ItemParadoxCard_Entity 
+				&& this.worldObj.getBlock(xCoord, yCoord+1, zCoord).isAir(worldObj, xCoord, yCoord+1, zCoord) 
+				&& ParadoxUtils.allRegisteredEntities.get(this.getStackInSlot(0).getItemDamage()) != null
+				&& !this.worldObj.isBlockIndirectlyGettingPowered(xCoord, yCoord, zCoord);
+	}
+	
 	public boolean canCreateBlock()
 	{
 		return this.getStackInSlot(0) != null
@@ -41,6 +56,11 @@ public class TileApperifier extends TileParadoxCommon{
 						&& (this.worldObj.getTileEntity(xCoord, yCoord+1, zCoord) != null && this.worldObj.getTileEntity(xCoord, yCoord+1, zCoord) instanceof IFluidHandler
 						&& ((IFluidHandler)this.worldObj.getTileEntity(xCoord, yCoord+1, zCoord)).fill(ForgeDirection.DOWN, ParadoxUtils.getFluidStackByCard(this.getStackInSlot(0)), false) == ParadoxUtils.getFluidStackByCard(this.getStackInSlot(0)).amount))
 				&& !this.worldObj.isBlockIndirectlyGettingPowered(xCoord, yCoord, zCoord);
+	}
+	
+	public float getRequiredParadoxToEntity()
+	{
+		return ParadoxUtils.entityCosts.get(ParadoxUtils.entitiesClassMapping.get(this.getStackInSlot(0).getItemDamage()));
 	}
 	
 	public float getRequiredParadoxToCreate()
@@ -89,14 +109,47 @@ public class TileApperifier extends TileParadoxCommon{
 				}
 			}
 		}else
-			requiredToCreate = (int) this.getMaxParadox();
+		{
+			if(this.canCreateEntity())
+			{
+				float required = this.getRequiredParadoxToEntity();
+				requiredToCreate = (int) required;
+				if(this.getParadox() >= required)
+				{
+					try
+					{
+						Class eClazz = ParadoxUtils.allRegisteredEntities.get(this.getStackInSlot(0).getItemDamage());
+						if(eClazz != null)
+						{
+							if(this.increaseParadoxBy(-required))
+							{
+								Entity e = (Entity) eClazz.getConstructor(World.class).newInstance(this.worldObj);
+								e.setPositionAndRotation(xCoord+0.5D, yCoord+1.2D, zCoord+0.5D, 0, 0);
+								if(e instanceof EntityLivingBase)
+								{
+									EntityLiving elb = (EntityLiving) e;
+									elb.onSpawnWithEgg((IEntityLivingData)null);
+									elb.playLivingSound();
+								}
+								if(!this.worldObj.isRemote)
+									this.worldObj.spawnEntityInWorld(e);
+							}
+						}
+					}catch(Exception e)
+					{
+						e.printStackTrace();
+					}
+				}
+			}else
+				requiredToCreate = (int) this.getMaxParadox();
+		}
 		super.updateEntity();
 	}
 	
 	@Override
 	public boolean canInsertParadoxInto(ForgeDirection dir)
 	{
-		return (dir == ForgeDirection.UP || dir == ForgeDirection.DOWN) && canAcceptParadox && this.canCreateBlock() && this.getParadox() < getRequiredParadoxToCreate();
+		return (dir == ForgeDirection.UP || dir == ForgeDirection.DOWN) && canAcceptParadox && ((this.canCreateBlock()  && this.getParadox() < getRequiredParadoxToCreate()) || (this.canCreateEntity() && this.getParadox() < getRequiredParadoxToEntity()));
 	}
 
 }

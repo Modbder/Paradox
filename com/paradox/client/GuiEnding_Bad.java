@@ -4,6 +4,7 @@ import java.lang.reflect.Field;
 
 import org.lwjgl.opengl.GL11;
 
+import scala.actors.threadpool.Arrays;
 import DummyCore.Utils.MathUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGameOver;
