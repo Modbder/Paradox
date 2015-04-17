@@ -192,11 +192,11 @@ public class TilePotentiaGenerator extends TileParadoxCommon implements IAspectC
 				this.cooldown = 80;
 			}
 		}
-
-		if(this.cooldown % 20 == 0)
-		{
-			this.increaseParadoxBy(1);
-		}
+		if(this.getAspects().getAmount(Aspect.ENERGY) > 0)
+			if(this.cooldown % 20 == 0)
+			{
+				this.increaseParadoxBy(1);
+			}
 		if(this.cooldown >= 0)--this.cooldown;
 		super.updateEntity();
 		ForgeDirection facing = ForgeDirection.DOWN;

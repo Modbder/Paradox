@@ -1,7 +1,6 @@
 package com.paradox.blocks;
 
 import com.paradox.common.core.ParadoxCore;
-
 import DummyCore.Blocks.BlocksRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -45,6 +44,14 @@ public class ParadoxBlocks {
 		BlocksRegistry.registerBlock(endore, "endore", ParadoxCore.class, ItemBlockHasMetadata.class);
 		endore.setHarvestLevel("pickaxe", 1);
 		OreDictionary.registerOre("oreEnderPearl", endore);
+		door = new BlockFuturisticDoor("door_generic").setBlockName("paradox.door").setBlockTextureName("paradoxmod:door_generic_d").setHardness(1.0F).setLightOpacity(1).setLightLevel(0).setResistance(1).setStepSound(Block.soundTypeMetal);
+		BlocksRegistry.registerBlock(door, "door", ParadoxCore.class, ItemBlockHasMetadata.class);
+		door_1 = new BlockFuturisticDoor("door_observatory").setBlockName("paradox.door_1").setBlockTextureName("paradoxmod:door_observatory_d").setHardness(1.0F).setLightOpacity(1).setLightLevel(0).setResistance(1).setStepSound(Block.soundTypeMetal);
+		BlocksRegistry.registerBlock(door_1, "door_1", ParadoxCore.class, ItemBlockHasMetadata.class);
+		door_2 = new BlockFuturisticDoor("door_technical").setBlockName("paradox.door_2").setBlockTextureName("paradoxmod:door_technical_d").setHardness(1.0F).setLightOpacity(1).setLightLevel(0).setResistance(1).setStepSound(Block.soundTypeMetal);
+		BlocksRegistry.registerBlock(door_2, "door_2", ParadoxCore.class, ItemBlockHasMetadata.class);
+		door_3 = new BlockFuturisticDoor("door_reactor").setBlockName("paradox.door_3").setBlockTextureName("paradoxmod:door_reactor_d").setHardness(1.0F).setLightOpacity(1).setLightLevel(0).setResistance(1).setStepSound(Block.soundTypeMetal);
+		BlocksRegistry.registerBlock(door_3, "door_3", ParadoxCore.class, ItemBlockHasMetadata.class);
 	}
 	
 
@@ -61,7 +68,11 @@ public class ParadoxBlocks {
 	potentiaGenerator,
 	secret,
 	apperifier,
-	endore;
+	endore,
+	door,
+	door_1,
+	door_2,
+	door_3;
 
 	public static Fluid paradox;
 }

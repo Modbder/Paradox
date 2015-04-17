@@ -10,6 +10,7 @@ import DummyCore.Utils.IDummyConfig;
 
 import com.paradox.blocks.ParadoxBlocks;
 import com.paradox.common.CardLibrary;
+import com.paradox.common.ChatCommandFrameFix;
 import com.paradox.common.GCLibrary;
 import com.paradox.common.ParadoxChatCommand;
 import com.paradox.common.ParadoxServer;
@@ -33,6 +34,7 @@ import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLInterModComms;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
@@ -89,7 +91,7 @@ public class ParadoxCore
 		ParadoxBlocks.initBlocks();
 		ParadoxItems.initItems();
 		GCLibrary.register();
-		
+		FMLInterModComms.sendMessage("Waila", "register", "com.paradox.common.utils.WAILAHandler.callbackRegister");	
 		FMLCommonHandler.instance().bus().register(new WorldTickHandler());
 		FMLCommonHandler.instance().bus().register(new PlayerSpawnHandler());
 		MinecraftForge.EVENT_BUS.register(new BucketsHandler());
@@ -122,6 +124,7 @@ public class ParadoxCore
         MinecraftServer mcserver = event.getServer();
         CommandHandler ch = (CommandHandler) mcserver.getCommandManager();
         ch.registerCommand(new ParadoxChatCommand());
+        ch.registerCommand(new ChatCommandFrameFix());
     }
 	
 	@Instance(ParadoxCore.modid)
@@ -132,7 +135,7 @@ public class ParadoxCore
 	
 	public static final String modid = "paradoxmod";
 	public static final String name = "Paradox";
-	public static final String version = "1.0.1710.0";
+	public static final String version = "1.5.1710.0";
 	
 	public static int ticksToFinish;
 	public static boolean generateVoid;

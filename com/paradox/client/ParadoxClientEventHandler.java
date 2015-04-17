@@ -91,6 +91,15 @@ public class ParadoxClientEventHandler {
 					if(type.equalsIgnoreCase("real"))
 						Minecraft.getMinecraft().displayGuiScreen(new GuiEnding_Real());
 				}
+				if(modData.fieldName.equalsIgnoreCase("mod") && modData.fieldValue.equalsIgnoreCase("paradoxSound"))
+				{
+					double x = Double.parseDouble(packetData[1].fieldValue);
+					double y = Double.parseDouble(packetData[2].fieldValue);
+					double z = Double.parseDouble(packetData[3].fieldValue);
+					String type = packetData[4].fieldValue.replace('^', ':');
+					
+					Minecraft.getMinecraft().theWorld.playSound(x, y, z, type, 1, 2-Minecraft.getMinecraft().theWorld.rand.nextFloat(), false);
+				}
 			}catch(Exception e)
 			{
 				

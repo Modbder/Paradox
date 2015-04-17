@@ -87,7 +87,7 @@ public class ParadoxMainMenu extends GuiMainMenu implements IMainMenu{
         this.drawString(this.fontRendererObj, s1, this.width - this.fontRendererObj.getStringWidth(s1) - 2, this.height - 10, -1);
         String s2 = "Using Paradox main menu.";
         this.drawString(this.fontRendererObj, s2, this.width - this.fontRendererObj.getStringWidth(s2) - 2, this.height - 30, -1);
-        String s3 = "Paradox version: 1.3";
+        String s3 = "Paradox version: 1.7";
         this.drawString(this.fontRendererObj, s3, this.width - this.fontRendererObj.getStringWidth(s3) - 2, this.height - 40, -1);
         short short1 = 274;
         int k = this.width / 2 - short1 / 2;

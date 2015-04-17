@@ -5,6 +5,7 @@ import DummyCore.Items.ItemRegistry;
 import com.paradox.blocks.ParadoxBlocks;
 import com.paradox.common.core.ParadoxCore;
 
+import net.minecraft.block.material.Material;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -25,12 +26,15 @@ public class ParadoxItems {
 		ItemRegistry.registerItem(extender, "extender", ParadoxCore.class);
 		entityCard = new ItemParadoxCard_Entity().setUnlocalizedName("paradox.ecard").setTextureName("paradoxmod:card");
 		ItemRegistry.registerItem(entityCard, "paradoxECard", ParadoxCore.class);
+		doorPlacer = new ItemDoorPlacer(Material.wood).setUnlocalizedName("paradox.doorPlacer").setTextureName("paradoxmod:doorPlacer");
+		ItemRegistry.registerItem(doorPlacer, "doorPlacer", ParadoxCore.class);
 	}
 	
 	public static Item
 	paradoxBucket,
 	card,
 	extender,
-	entityCard;
+	entityCard,
+	doorPlacer;
 
 }
